@@ -1,7 +1,7 @@
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy #imports the SQLAlchemy class from the flask_sqlalchemy module
 
 
-db = SQLAlchemy()
+db = SQLAlchemy() #instantiation
 
 
 class User(db.Model):

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>List Movies</title>
+</head>
+<body>
+    <h1>List of Movies</h1>
+    <ul>
+        {% for movie in movies %}
+            <li>
+                {{ movie.title }} ({{ movie.release_year }}) - Directed by: {{ movie.director }} - Rating: {{ movie.rating }}
+                <a href="/add_review?movie_id={{ movie.movie_id }}" class="btn btn-primary">Add Review</a>
+                <form method="POST" action="/delete_movie/{{ movie.movie_id }}">
+                    <input type="submit" class="btn btn-danger" value="Delete">
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <br>
+    <a href="/add_movie" class="btn btn-success" target="_blank">Add Movie</a>
+</body>
+</html>

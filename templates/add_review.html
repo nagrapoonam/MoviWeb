@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Add Review</title>
+</head>
+<body>
+    <h1>Add Review</h1>
+    <form method="POST" action="/add_review">
+        <div class="form-group">
+        <label for="user_id">User ID:</label>
+        <input type="number" id="user_id" name="user_id" required><br><br>
+
+        <label for="movie_id">Movie ID:</label>
+        <input type="number" id="movie_id" name="movie_id" required><br><br>
+
+        <label for="review_text">Review Text:</label><br>
+        <textarea id="review_text" name="review_text" rows="4" cols="50" required></textarea><br><br>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Submit Review">
+    </form>
+    <br>
+    <a href="/list_movies" target="_blank">List Movies</a>
+</body>
+</html>

@@ -75,6 +75,24 @@ class UserMovie(db.Model):
         return f"User {self.user_id} marked Movie {self.movie_id} as a favorite"
 
 
+class Review(db.Model):
+    """ Define the Review class to store user reviews of movies. """
+
+    __tablename__ = 'reviews'
+
+    review_id = db.Column(db.Integer, primary_key=True, autoincrement=True)  # primary key, autoincrement
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)  # foreign key referencing UserID in Users table
+    movie_id = db.Column(db.Integer, db.ForeignKey('movies.movie_id'), nullable=False)  # foreign key referencing MovieID in Movies table
+    review_text = db.Column(db.Text, nullable=False)  # stores the user's review text
+
+    user = db.relationship("User")
+    movie = db.relationship("Movie")
+
+    def __repr__(self):
+        return f"<Review(review_id={self.review_id}, user_id={self.user_id}, movie_id={self.movie_id})>"
+
+    def __str__(self):
+        return f"Review {self.review_id}: User {self.user_id} - Movie {self.movie_id}\nReview Text: {self.review_text}"
 
 
 

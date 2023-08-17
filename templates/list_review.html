@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>List Reviews</title>
+</head>
+<body>
+    {% if message %}
+    <div class="alert alert-info">
+        {{ message }}
+    </div>
+    {% endif %}
+    <h1>All Reviews</h1>
+    <ul>
+        {% for review in reviews %}
+             <li>
+                <p>Movie ID: {{ review.movie_id }}</p>
+                <p>User ID: {{ review.user_id }}</p>
+                <p>Review: {{ review.review_text }}</p>
+                <form method="POST" action="{{ url_for('delete_review', review_id=review.review_id) }}">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <br>
+    <a href="{{ url_for('list_movies') }}" target="_blank">Back to Movie List</a>
+</body>
+</html>

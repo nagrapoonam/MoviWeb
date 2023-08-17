@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Add Movie</title>
+</head>
+<body>
+    <h1>Add Movie</h1>
+    <form method="POST" action="/add_movie">
+        <div class="form-group">
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="director">Director:</label>
+        <input type="text" id="director" name="director" required><br><br>
+
+        <label for="release_year">Release Year:</label>
+        <input type="number" id="release_year" name="release_year" required><br><br>
+
+        <label for="rating">Rating:</label>
+        <input type="number" id="rating" name="rating" step="0.1" required><br><br>
+</div>
+        <input type="submit" class="btn btn-primary" value="Add Movie">
+    </form>
+    <br>
+    <a href="/list_movies"  target="_blank">List Movies</a>
+</body>
+</html>

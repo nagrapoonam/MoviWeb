@@ -1,20 +1,13 @@
-from MoviWeb.datamanager.data_manager_interface import DataManagerInterface
-from MoviWeb.data_models import db, User, Movie, UserMovie
+from datamanager.data_manager_interface import DataManagerInterface
+from data_models import db,User, Movie, UserMovie, Review
 from flask_sqlalchemy import SQLAlchemy
 
 
 
 class SQLiteDataManager(DataManagerInterface):
     def __init__(self, db_file_name):
-        # self.db = SQLAlchemy(db_file_name)
         self.db = db_file_name
-    # def __init__(self, app):
-    #     self.db = SQLAlchemy(app)
-    # def __init__(self, db):
-    #     self.db = db
-        # self.db = SQLAlchemy(db_file_name)
-        # self.db = SQLAlchemy()
-        # self.db.init_app(db_file_name)
+
 
     def list_all_users(self):
         return User.query.all()
@@ -47,3 +40,24 @@ class SQLiteDataManager(DataManagerInterface):
         if movie:
             self.db.session.delete(movie)
             self.db.session.commit()
+
+    def commit(self):
+        self.db.session.commit()
+
+    def get_user_by_id(self, user_id):
+        return User.query.get(user_id)
+
+    def get_movie_by_id(self, movie_id):
+        return Movie.query.get(movie_id)
+
+    def list_all_reviews(self):
+        reviews = Review.query.all()
+        return reviews
+
+    def get_review_by_id(self, review_id):
+        return Review.query.get(review_id)
+
+    def delete_review(self, review):
+        db.session.delete(review)
+        db.session.commit()
+
